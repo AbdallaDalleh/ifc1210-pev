@@ -64,6 +64,9 @@ void pev_cleanup(int code)
 
 	pev_evt_read(event, 1);
 	pev_evt_unmask(event, event->src_id);
+	for(channel = 0; channel < NUMBER_OF_CHANNELS; channel++)
+		status = (uint32_t)channels[channel].registers[REGISTER_TSR];
+
 	if(base)
 		pev_map_free(&map);
 
